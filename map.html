@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Mobile App</title>
+<!-- 모바일할때는 꼭 뷰포트 넣어야함 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<!-- 상태 바의 색상을 정하는 코드-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!-- 모바일 웹을 웹앱 형태로 설정하는 코드 -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!-- 바로가기 아이콘, 아이폰, 안드로이드 둘다 적용-->
+<link rel="apple-touch-icon-precomposed" href=".png"/>
+<!-- 인트로 화면을 설정하는 코드 -->
+<link rel="apple--touch-startup-image" href=".png" />
+<link rel="stylesheet" href="css/main.css" />
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+<style type="text/css">
+      #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+      }
+</style>
+<body>
+<header>
+	<div class="header_wrap"><!-- 빨간색부분 -->
+		<h1 class="logo"><a href="#">MOBILE</a></h1>
+		<a href="#" class="srchBtn"><span class="srch_icon"><img src="images/btn_search.png" alt="검색박스 열기" /></span></a>
+		<div class="srch_box"><!-- 돋보기를 누르면 srch_box가 나옴 -->
+			<form action="" method="post">
+			<fieldset>
+			<legend class="blind">검색</legend>
+				<label for="srch" class="blind">검색어 입력</label>
+				<input type="search" id="srch"/><input type="image" src="images/btn_down_search.png" alt="검색버튼" />
+			</fieldset>
+			</form>
+		</div>
+	</div>
+	<nav class="gnb">
+		<ul>
+			<li><a href="#">COMPANY</a></li>
+			<li><a href="#">PROJECT</a></li>
+			<li><a href="#">RECRUIT</a></li>
+			<li><a href="#">NOTICE</a></li>
+		</ul>
+	</nav>
+</header>
+<hr />
+<section>
+	<!-- 구글지도 구글맵스api들어가서 가져옴 -->
+	<div id="map"></div>
+	<script type="text/javascript">
+      function initMap() {
+        var uluru = {lat: 37.350359, lng: 127.108963};/*위도, 경도*/
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,/* 줌이 클수록 가까이 */
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+		   title:"(주)우리회사"/* map:이라고만 되어있었는데 옆에 map,하고 아래에 title 적어줌 */
+        });
+		var infowindow = new google.maps.InfoWindow({/* new : 새로운객체생성 *//* var infowindow 부터 infowindow.open(map,marker);까지 적어줌 */
+			content:"(주)우리회사 경기도 성남시 분당구 구미동 미금역"
+		});
+		infowindow.open(map,marker);
+      }
+    </script>
+	 <script type="text/javascript" async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDElnXu0aoArZx2H2y6wjPGGZc036gSoio&callback=initMap">
+    </script>
+</section>
+<hr />
+<footer>
+	<div class="foot_inner">
+		<ul>
+			<li><a href="#">홈</a></li>
+			<li><a href="#">메뉴보기</a></li>
+			<li><a href="#">전체보기</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">로그인</a></li>
+			<li><a href="#">PC버전</a></li>
+			<li><a href="#">고객센터</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">개인정보취급방침</a></li>
+			<li><a href="#">이용약관</a></li>
+		</ul>
+	</div>
+	<p><small>COPYRIGHT&copy;2016 mobile. ALL RIGHTS RESERVED</small></p>
+	<a href="#"><img src="images/btn_bot_top.png" alt="top"/></a>
+</footer>
+</body>
+</html>
