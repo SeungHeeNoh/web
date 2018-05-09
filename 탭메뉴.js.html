@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>탭메뉴 js</title>
+  <style type="text/css">
+      *{margin:0; padding:0;}
+      ul{list-style:none;}
+      img{border:none;}
+      a{text-decoration:none; color:#222;}
+      body{font-size:12px; font-family:"돋움", sans-serif;}
+      dl{position:relative; top:30px; left:150px; width:350px; height:300px; background:url(images/tab_bg.gif) repeat-x 0 0;}
+      dt{float:left;}
+      dd{display:none; position:absolute; top:26px; left:0; width:100%;}
+      dd:first-of-type{display:block;}
+      ul{width:100%;}
+      ul li{line-height:2; border-bottom:1px solid #000;}
+      ul li a{color:#666;}
+      ul li a:hover{color:#d06; text-decoration:underline;}
+      ul li span{position:absolute; right:0;}
+      dd p{position:absolute; top:-25px; right:0;}
+  </style>
+  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript">
+      //<![CDATA[
+//        window.onload = function(){
+//            var myDL = document.getElementById("tabMenu");
+//            var dt = myDL.getElementsByTagName("dt");
+//            var dd = myDL.getElementsByTagName("dd");
+//            
+//            for(var i=0; i<dt.length; i++){
+//                dt[i].children[0].onclick = dt[i].children[0].onfocus = function(e){
+//                    e.preventDefault();
+//                    for(var k=0; k<dt.length; k++){
+//                        var target = dt[k].children[0].children[0];
+//                        target.src = target.src.replace("_over.gif", "_out.gif");
+//                    }
+//                    this.children[0].src=this.children[0].src.replace("_out.gif", "_over.gif");
+//                    for(var k=0; k<dd.length; k++){
+//                        dd[k].style.display = "none";
+//                    }
+//                    var theNext = this.parentNode.nextSibling;
+//                    if(theNext.nodeType == 3){
+//                        theNext = theNext.nextSibling;
+//                    }
+//                    theNext.style.display= "block";
+//                }    
+//            }    
+//        }//onload
+      $(document).ready(function(){
+          $(".tabMenu dt a").click(function(){
+              $("dt > a > img").each(function(){//각각 바꿀 때 사용!!
+                $(this).attr("src", $(this).attr("src").replace("_over.gif", "_out.gif"));    
+              });
+              $(this).children("img").attr("src", $(this).children("img").attr("src").replace("_out.gif", "_over.gif"));
+              $("dd").css("display","none");
+              $(this).parent().next().css("display", "block");
+          });
+      });
+      //]]>
+  </script>
+</head>
+<body>
+<dl id="tabMenu" class="tabMenu">
+    <dt><a href="#"><img src="images/tab_1_over.gif" alt="공지사항"/></a></dt>
+    <dd>
+        <ul>
+        <li><a href="#">공지사항</a> <span>2018/01/04</span></li>
+        <li><a href="#">공지사항</a> <span>2018/01/04</span></li>
+        <li><a href="#">공지사항</a> <span>2018/01/04</span></li>
+        <li><a href="#">공지사항</a> <span>2018/01/04</span></li>
+        </ul>
+        <p><a href="#"><img src="images/tab_more.gif" alt="공지사항 더보기"/></a></p>
+    </dd>
+    <dt><a href="#"><img src="images/tab_2_out.gif" alt="입찰정보"/></a></dt>
+    <dd>
+        <ul>
+            <li><a href="#">입찰정보</a> <span>2018/01/04</span></li>
+            <li><a href="#">입찰정보</a> <span>2018/01/04</span></li>
+            <li><a href="#">입찰정보</a> <span>2018/01/04</span></li>
+            <li><a href="#">입찰정보</a> <span>2018/01/04</span></li>
+            <li><a href="#">입찰정보</a> <span>2018/01/04</span></li>
+        </ul>
+        <p><a href="#"><img src="images/tab_more.gif" alt="입찰정보 더보기"/></a></p>
+    </dd>
+    <dt><a href="#"><img src="images/tab_3_out.gif" alt="채용공고"/></a></dt>
+    <dd>
+        <ul>
+            <li><a href="#">채용공고</a> <span>2018/01/04</span></li>
+            <li><a href="#">채용공고</a> <span>2018/01/04</span></li>
+            <li><a href="#">채용공고</a> <span>2018/01/04</span></li>
+            <li><a href="#">채용공고</a> <span>2018/01/04</span></li>
+        </ul>
+        <p><a href="#"><img src="images/tab_more.gif" alt="채용공고 더보기"/></a></p>
+    </dd>
+</dl>
+</body>
+</html>
